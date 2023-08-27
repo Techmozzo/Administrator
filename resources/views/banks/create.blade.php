@@ -21,7 +21,7 @@
                     @csrf
                     <div class="form-group">
                         <label class="control-label" for="name">Name</label>
-                        <input class="form-control @error('name') is-invalid @enderror" id="name" name="name" />
+                        <input class="form-control @error('name') is-invalid @enderror" id="name" name="name" value="{{old('name')}}" />
                         @error('name')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -32,7 +32,7 @@
                     <div class="form-group">
                         <label class="control-label" for="email">Email Address</label>
                         <input type="text" class="form-control @error('email') is-invalid @enderror" id="email"
-                            name="email" />
+                            name="email" value="{{old('email')}}" />
                         @error('email')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -43,7 +43,7 @@
                     <div class="form-group">
                         <label class="control-label" for="email">Web Address</label>
                         <input type="text" class="form-control @error('website') is-invalid @enderror" id="website"
-                            name="website" />
+                            name="website" value="{{old('website')}}" />
                         @error('website')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -54,7 +54,7 @@
                     <div class="form-group">
                         <label class="control-label" for="email">Phone</label>
                         <input type="text" class="form-control @error('phone') is-invalid @enderror" id="phone"
-                            name="phone" />
+                            name="phone" value="{{old('phone')}}" />
                         @error('phone')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>

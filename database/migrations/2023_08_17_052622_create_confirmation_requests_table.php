@@ -18,6 +18,7 @@ class CreateConfirmationRequestsTable extends Migration
             $table->string('name');
             $table->string('opening_period');
             $table->string('closing_period');
+            $table->string('file')->nullable();
             $table->unsignedInteger('auditor_id');
             $table->foreign('auditor_id')->references('id')->on('auditors')->onDelete('cascade');
             $table->unsignedInteger('company_id');
