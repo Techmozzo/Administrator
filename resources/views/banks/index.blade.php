@@ -48,24 +48,25 @@
                                                 @endif
                                             </td>
                                             <td>
-                                                <a href="{{ url('/banks/'.encrypt($bank->id).'/edit') }}"
+                                                <a href="{{ url('/banks/' . encrypt_helper($bank->id) . '/edit') }}"
                                                     title="Edit bank"><span class="material-icons">edit_note</span></a>
                                                 &nbsp;
                                                 @if ($bank->is_verified)
-                                                    <a class="unverify-item text-warning" data-id="{{ encrypt($bank->id) }}"
+                                                    <a class="unverify-item text-warning"
+                                                        data-id="{{ encrypt_helper($bank->id) }}"
                                                         data-message="Yes, unverify it!" href="#"
                                                         title="Unverify bank"><span
                                                             class="material-icons">unpublished</span></a>
                                                 @else
-                                                    <a class="verify-item text-success" data-id="{{ encrypt($bank->id) }}"
+                                                    <a class="verify-item text-success"
+                                                        data-id="{{ encrypt_helper($bank->id) }}"
                                                         data-message="Yes, verify it!" href="#"
-                                                        title="Verify bank"><span
-                                                            class="material-icons">task_alt</span></a>
+                                                        title="Verify bank"><span class="material-icons">task_alt</span></a>
                                                 @endif
                                                 &nbsp;
-                                                <a class="delete-item text-danger"
-                                                    data-id="{{ encrypt($bank->id) }}" href="#"
-                                                    title="Delete bank"><span class="material-icons">delete</span></a>
+                                                <a class="delete-item text-danger" data-id="{{ encrypt_helper($bank->id) }}"
+                                                    href="#" title="Delete bank"><span
+                                                        class="material-icons">delete</span></a>
                                             </td>
                                         </tr>
                                     @endforeach

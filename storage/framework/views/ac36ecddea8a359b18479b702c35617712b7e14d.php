@@ -16,7 +16,7 @@
             <div class="col-lg-8">
                 <?php echo $__env->make('layouts.message', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
                 <div class="clearfix">&nbsp;</div>
-                <form action="<?php echo e(url('/companies/' . encrypt($company->id))); ?>" method="post">
+                <form action="<?php echo e(url('/companies/' . encrypt_helper($company->id))); ?>" method="post">
                     <?php echo csrf_field(); ?>
                     <?php echo method_field('PATCH'); ?>
                     <div class="form-group">

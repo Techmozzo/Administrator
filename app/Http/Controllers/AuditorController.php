@@ -12,10 +12,11 @@ use Throwable;
 class AuditorController extends Controller
 {
 
-    public function destroy($id){
+    public function destroy($id)
+    {
         $data = ['success' => 'User deleted successfully'];
-        try{
-            $user = Auditor::find(decrypt($id));
+        try {
+            $user = Auditor::find(decrypt_helper($id));
             DB::beginTransaction();
             $user->profile()->forceDelete();
             $user->address()->forceDelete();
@@ -23,30 +24,31 @@ class AuditorController extends Controller
             $user->accounts()->delete();
             $result = $user->forceDelete($id);
             DB::commit();
-        }catch(Throwable $e){
+        } catch (Throwable $e) {
             DB::rollBack();
             return response()->json(['error' => $e->getMessage()]);
         }
-        if (!$result){
+        if (!$result) {
             $data = ['error' => 'Unable to delete user'];
         }
         return response()->json($data);
     }
 
 
-    public function block($id){
+    public function block($id)
+    {
         $data = ['success' => 'Auditor blocked successfully'];
-        try{
-            $auditor = Auditor::find($this->decrypt($id));
-            if($auditor->is_blocked){
+        try {
+            $auditor = Auditor::find($this->decrypt_helper($id));
+            if ($auditor->is_blocked) {
                 $result = $auditor->update(['is_blocked' => 0]);
-            }else{
+            } else {
                 $result = $auditor->update(['is_blocked' => 1]);
             }
-        }catch(Throwable $e){
+        } catch (Throwable $e) {
             return response()->json(['error' => $e->getMessage()]);
         }
-        if (!$result){
+        if (!$result) {
             $data = ['error' => 'Unable to Block Auditor'];
         }
         return response()->json($data);
@@ -59,18 +61,20 @@ class AuditorController extends Controller
         return view('admin.users.index', compact('users', 'user'));
     }
 
-    public function verify($id){
-        $user = User::with('profile')->where('id',$id)->first();
+    public function verify($id)
+    {
+        $user = User::with('profile')->where('id', $id)->first();
         $user->update(['verified' => 1]);
         VerificationJob::dispatch('Successful', $user);
-        return back()->with('success', $user->profile->first_name.' '. $user->profile->last_name. ' is now verified.');
+        return back()->with('success', $user->profile->first_name . ' ' . $user->profile->last_name . ' is now verified.');
     }
 
 
-    public function unverify($id){
-        $user = User::with('profile')->where('id',$id)->first();
+    public function unverify($id)
+    {
+        $user = User::with('profile')->where('id', $id)->first();
         $user->update(['verified' => 2, 'identification' => null]);
         VerificationJob::dispatch('Unsuccessful', $user);
-        return back()->with('success', $user->profile->first_name.' '. $user->profile->last_name. ' is now unverified.');
+        return back()->with('success', $user->profile->first_name . ' ' . $user->profile->last_name . ' is now unverified.');
     }
 }

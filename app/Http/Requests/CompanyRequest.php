@@ -24,9 +24,9 @@ class CompanyRequest extends FormRequest
      */
     public function rules()
     {
-        $company = Company::find(decrypt($this->company));
+        $company = Company::find(decrypt_helper($this->company));
         return [
-            'name' => 'required|string|unique:companies,name,'.$company->id.',id',
+            'name' => 'required|string|unique:companies,name,' . $company->id . ',id',
             'administrator_id' => 'required|integer|exists:auditors,id'
         ];
     }

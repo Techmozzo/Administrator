@@ -28,8 +28,8 @@ class BankRequest extends FormRequest
         if ($this->isMethod('post')) {
             $rule['name'] = 'required|string|unique:banks,name';
         } elseif ($this->isMethod('patch')) {
-            $bank = Bank::find(decrypt($this->bank));
-            $rule['name'] = 'required|string|unique:banks,name,'.$bank->id.',id';
+            $bank = Bank::find(decrypt_helper($this->bank));
+            $rule['name'] = 'required|string|unique:banks,name,' . $bank->id . ',id';
         }
         return $rule;
     }

@@ -9,7 +9,7 @@
             <h2 class="p-1 m-0 text-16 font-weight-semi">Edit {{ $bank->name }}</h2>
             <div class="flex-grow-1"></div>
             <div>
-                <a type="button" class="btn btn-opacity btn-primary btn-sm my-sm mr-sm" href="{{route('banks.index')}}"
+                <a type="button" class="btn btn-opacity btn-primary btn-sm my-sm mr-sm" href="{{ route('banks.index') }}"
                     title="Back">Back</a>
             </div>
         </div>
@@ -17,7 +17,7 @@
             <div class="col-lg-8">
                 @include('layouts.message')
                 <div class="clearfix">&nbsp;</div>
-                <form action="{{ url('/banks/' . encrypt($bank->id)) }}" method="post">
+                <form action="{{ url('/banks/' . encrypt_helper($bank->id)) }}" method="post">
                     @csrf
                     @method('PATCH')
                     <div class="form-group">
@@ -63,7 +63,7 @@
                             </span>
                         @enderror
                     </div>
-                    
+
                     <div class="form-group col-lg-6" style="margin:auto;">
                         <button type="submit" class="btn btn-primary btn-sm">
                             <i class="fa fa-dot-circle-o"></i> Submit

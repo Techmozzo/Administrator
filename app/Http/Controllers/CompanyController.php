@@ -63,7 +63,7 @@ class CompanyController extends Controller
      */
     public function edit($company)
     {
-        $company = Company::find(decrypt($company));
+        $company = Company::find(decrypt_helper($company));
         $role = AuditorRole::where('name', 'admin')->first() ?? 1;
         $administrators = Auditor::where([['company_id', $company->id], ['role_id', $role->id]])->get();
         return view('companies.edit', compact('company', 'administrators'));
@@ -78,7 +78,7 @@ class CompanyController extends Controller
      */
     public function update(CompanyRequest $request, $company)
     {
-        $company = Company::find(decrypt($company));
+        $company = Company::find(decrypt_helper($company));
         $company->update($request->all());
         $company->refresh();
         return redirect()->back()->with(['success' => 'Company updated successfully.']);
@@ -96,19 +96,20 @@ class CompanyController extends Controller
     }
 
 
-    public function verification($id){
+    public function verification($id)
+    {
         $data = ['success' => 'Company has been verified.'];
-        try{
-            $company = Company::find(decrypt($id));
-            if($company->is_verified){
+        try {
+            $company = Company::find(decrypt_helper($id));
+            if ($company->is_verified) {
                 $result = $company->update(['is_verified' => 0]);
-            }else{
+            } else {
                 $result = $company->update(['is_verified' => 1]);
             }
-        }catch(Throwable $e){
+        } catch (Throwable $e) {
             return response()->json(['error' => $e->getMessage()]);
         }
-        if (!$result){
+        if (!$result) {
             $data = ['error' => 'Unable to verify company.'];
         }
         return response()->json($data);

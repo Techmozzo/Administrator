@@ -14,7 +14,7 @@ class EmailController extends Controller
 
     public function create($id)
     {
-        $user = User::find($this->decrypt($id));
+        $user = User::find($this->decrypt_helper($id));
         return view('admin.email.create', compact('user'));
     }
 

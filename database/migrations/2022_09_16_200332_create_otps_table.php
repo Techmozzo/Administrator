@@ -17,7 +17,7 @@ class CreateOtpsTable extends Migration
             $table->increments('id');
             $table->string('user_type');
             $table->unsignedInteger('user_id');
-            $table->string('code');
+            $table->string('token');
             $table->timestamp('expired_at');
             $table->softDeletes();
             $table->timestamps();

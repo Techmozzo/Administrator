@@ -17,7 +17,7 @@
             <div class="col-lg-8">
                 @include('layouts.message')
                 <div class="clearfix">&nbsp;</div>
-                <form action="{{ route('banks.create') }}" method="post">
+                <form action="{{ route('banks.store') }}" method="post">
                     @csrf
                     <div class="form-group">
                         <label class="control-label" for="name">Name</label>

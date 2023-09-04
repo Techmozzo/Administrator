@@ -12,8 +12,8 @@
                     <h2 class="p-1 m-0 text-16 font-weight-semi">Companies - Audit Firms </h2>
                     <div class="flex-grow-1"></div>
                     <div>
-                        <a type="button" class="btn btn-opacity btn-primary btn-sm my-sm mr-sm"
-                            href="#" title="Create Company">Create Company</a>
+                        <a type="button" class="btn btn-opacity btn-primary btn-sm my-sm mr-sm" href="#"
+                            title="Create Company">Create Company</a>
                     </div>
                 </div>
                 <div class="card">
@@ -45,23 +45,25 @@
                                                 <?php endif; ?>
                                             </td>
                                             <td>
-                                                <a href="<?php echo e(url('/companies/'.encrypt($company->id).'/edit')); ?>"
+                                                <a href="<?php echo e(url('/companies/' . encrypt_helper($company->id) . '/edit')); ?>"
                                                     title="Edit Company"><span class="material-icons">edit_note</span></a>
                                                 &nbsp;
                                                 <?php if($company->is_verified): ?>
-                                                    <a class="unverify-item text-warning" data-id="<?php echo e(encrypt($company->id)); ?>"
+                                                    <a class="unverify-item text-warning"
+                                                        data-id="<?php echo e(encrypt_helper($company->id)); ?>"
                                                         data-message="Yes, unverify it!" href="#"
                                                         title="Unverify Company"><span
                                                             class="material-icons">unpublished</span></a>
                                                 <?php else: ?>
-                                                    <a class="verify-item text-success" data-id="<?php echo e(encrypt($company->id)); ?>"
+                                                    <a class="verify-item text-success"
+                                                        data-id="<?php echo e(encrypt_helper($company->id)); ?>"
                                                         data-message="Yes, verify it!" href="#"
                                                         title="Verify Company"><span
                                                             class="material-icons">task_alt</span></a>
                                                 <?php endif; ?>
                                                 &nbsp;
                                                 <a class="delete-item text-danger"
-                                                    data-id="<?php echo e(encrypt($company->id)); ?>" href="#"
+                                                    data-id="<?php echo e(encrypt_helper($company->id)); ?>" href="#"
                                                     title="Delete Company"><span class="material-icons">delete</span></a>
                                             </td>
                                         </tr>

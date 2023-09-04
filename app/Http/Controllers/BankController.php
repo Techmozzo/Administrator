@@ -18,7 +18,6 @@ class BankController extends Controller
     {
         $banks = Bank::all();
         return view('banks.index', compact('banks'));
-
     }
 
     /**
@@ -39,7 +38,7 @@ class BankController extends Controller
      */
     public function store(BankRequest $request)
     {
-        Bank::updateOrCreate(['name' => $request->name], $request->except('name')+['bank_code' => 'EA-' . rand(100, 999) . rand(1000, 9999) . '-B']);
+        Bank::updateOrCreate(['name' => $request->name], $request->except('name') + ['bank_code' => 'EA-' . rand(100, 999) . rand(1000, 9999) . '-B']);
         return redirect()->route('banks.index')->with(['success' => 'Bank created successfully.']);
     }
 
@@ -62,7 +61,7 @@ class BankController extends Controller
      */
     public function edit($bank)
     {
-        $bank = Bank::find(decrypt($bank));
+        $bank = Bank::find(decrypt_helper($bank));
         return view('banks.edit', compact('bank'));
     }
 
@@ -75,7 +74,7 @@ class BankController extends Controller
      */
     public function update(BankRequest $request, $bank)
     {
-        $bank = Bank::find(decrypt($bank));
+        $bank = Bank::find(decrypt_helper($bank));
         $bank->update($request->all());
         $bank->refresh();
         return redirect()->back()->with(['success' => 'Bank updated successfully.']);
@@ -92,19 +91,20 @@ class BankController extends Controller
         //
     }
 
-    public function verification($id){
+    public function verification($id)
+    {
         $data = ['success' => 'Bank has been verified.'];
-        try{
-            $bank = Bank::find(decrypt($id));
-            if($bank->is_verified){
+        try {
+            $bank = Bank::find(decrypt_helper($id));
+            if ($bank->is_verified) {
                 $result = $bank->update(['is_verified' => 0]);
-            }else{
+            } else {
                 $result = $bank->update(['is_verified' => 1]);
             }
-        }catch(Throwable $e){
+        } catch (Throwable $e) {
             return response()->json(['error' => $e->getMessage()]);
         }
-        if (!$result){
+        if (!$result) {
             $data = ['error' => 'Unable to verify bank.'];
         }
         return response()->json($data);

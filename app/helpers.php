@@ -52,3 +52,19 @@ function storeFileLocally(string $folderName, Object $file): String
     $file->move(public_path('store/' . $folderName), $name);
     return 'store/' . $folderName . '/' . $name;
 }
+
+if(!function_exists('decrypt_helper')){
+    function decrypt_helper($id)
+    {
+        return (new Hashids(config('app.hash_key'), 32))->decode($id)[0] ?? null;
+    }
+}
+
+if(!function_exists('encrypt_helper')){
+     function encrypt_helper($id)
+    {
+        if (is_numeric($id)) {
+            return (new Hashids(config('app.hash_key'), 32))->encode($id);
+        }
+    }
+}

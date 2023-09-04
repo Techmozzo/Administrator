@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Schema;
 
 class CreateSignatoriesTable extends Migration
@@ -21,6 +22,8 @@ class CreateSignatoriesTable extends Migration
             $table->unsignedInteger('confirmation_request_id');
             $table->foreign('confirmation_request_id')->references('id')->on('confirmation_requests')->onDelete('cascade');
             $table->unsignedSmallInteger('status')->default(0);
+            $table->string('token');
+            $table->timestamp('expired_at')->default(Carbon::now()->addDay());
             $table->softDeletes();
             $table->timestamps();
         });

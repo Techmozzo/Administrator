@@ -9,7 +9,7 @@
             <h2 class="p-1 m-0 text-16 font-weight-semi">Edit {{ $company->name }}</h2>
             <div class="flex-grow-1"></div>
             <div>
-                <a type="button" class="btn btn-opacity btn-primary btn-sm my-sm mr-sm" href="{{route('companies.index')}}"
+                <a type="button" class="btn btn-opacity btn-primary btn-sm my-sm mr-sm" href="{{ route('companies.index') }}"
                     title="Back">Back</a>
             </div>
         </div>
@@ -17,7 +17,7 @@
             <div class="col-lg-8">
                 @include('layouts.message')
                 <div class="clearfix">&nbsp;</div>
-                <form action="{{ url('/companies/' . encrypt($company->id)) }}" method="post">
+                <form action="{{ url('/companies/' . encrypt_helper($company->id)) }}" method="post">
                     @csrf
                     @method('PATCH')
                     <div class="form-group">

@@ -235,4 +235,6 @@ return [
         'PDF' => Barryvdh\DomPDF\Facade::class,
     ],
 
+    'hash_key' => env('HASH_KEY', 'E-Audit_ConfirmaTion')
+
 ];

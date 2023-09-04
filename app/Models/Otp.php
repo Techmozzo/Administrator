@@ -10,6 +10,6 @@ class Otp extends Model
 {
     use HasFactory, SoftDeletes;
 
-    protected $fillable = ['user_id','user_type','code','expired_at'];
+    protected $fillable = ['user_id','user_type','token','expired_at'];
 
 }
