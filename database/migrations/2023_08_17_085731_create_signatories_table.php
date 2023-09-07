@@ -21,7 +21,8 @@ class CreateSignatoriesTable extends Migration
             $table->string('phone');
             $table->unsignedInteger('confirmation_request_id');
             $table->foreign('confirmation_request_id')->references('id')->on('confirmation_requests')->onDelete('cascade');
-            $table->unsignedSmallInteger('status')->default(0);
+            $table->string('status')->default('PENDING');
+            $table->string('reason')->nullable();
             $table->string('token');
             $table->timestamp('expired_at')->default(Carbon::now()->addDay());
             $table->softDeletes();

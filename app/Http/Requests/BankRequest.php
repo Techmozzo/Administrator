@@ -24,13 +24,19 @@ class BankRequest extends FormRequest
      */
     public function rules()
     {
-        $rule = [];
+        $rules = [
+            'email' => 'required|email|unique:banks,email',
+            'phone' => 'required|string|max:15',
+            'administrator_first_name' => 'required|string|max:255',
+            'administrator_last_name' => 'required|string|max:255',
+            'administrator_email' => 'required|email|unique:bankers,email',
+        ];
         if ($this->isMethod('post')) {
-            $rule['name'] = 'required|string|unique:banks,name';
+            $rules['name'] = 'required|string|unique:banks,name';
         } elseif ($this->isMethod('patch')) {
             $bank = Bank::find(decrypt_helper($this->bank));
-            $rule['name'] = 'required|string|unique:banks,name,' . $bank->id . ',id';
+            $rules['name'] = 'required|string|unique:banks,name,' . $bank->id . ',id';
         }
-        return $rule;
+        return $rules;
     }
 }

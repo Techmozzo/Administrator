@@ -16,7 +16,7 @@
             <div class="col-lg-8">
                 <?php echo $__env->make('layouts.message', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
                 <div class="clearfix">&nbsp;</div>
-                <form action="<?php echo e(url('/banks/' . encrypt($bank->id))); ?>" method="post">
+                <form action="<?php echo e(url('/banks/' . encrypt_helper($bank->id))); ?>" method="post">
                     <?php echo csrf_field(); ?>
                     <?php echo method_field('PATCH'); ?>
                     <div class="form-group">
@@ -118,7 +118,7 @@ if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>
                     </div>
-                    
+
                     <div class="form-group col-lg-6" style="margin:auto;">
                         <button type="submit" class="btn btn-primary btn-sm">
                             <i class="fa fa-dot-circle-o"></i> Submit

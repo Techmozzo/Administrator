@@ -3,9 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\BankRequest;
+use App\Jobs\AddBankerJob;
+use App\Jobs\EmailVerificationJob;
 use App\Models\Bank;
-use Illuminate\Http\Request;
+use App\Models\Banker;
+use App\Models\BankerProfile;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Log;
 use Throwable;
+use Illuminate\Support\Str;
 
 class BankController extends Controller
 {
@@ -38,7 +45,43 @@ class BankController extends Controller
      */
     public function store(BankRequest $request)
     {
-        Bank::updateOrCreate(['name' => $request->name], $request->except('name') + ['bank_code' => 'EA-' . rand(100, 999) . rand(1000, 9999) . '-B']);
+        try {
+            DB::beginTransaction();
+            $bank = Bank::updateOrCreate(
+                ['name' => $request->name],
+                [
+                    'bank_code' => 'EA-' . rand(100, 999) . rand(1000, 9999) . '-B',
+                    'website' => $request->website,
+                    'email' => $request->email,
+                    'email' => $request->phone,
+                ]
+            );
+            $password = Str::random(8);
+            $banker =  Banker::updateOrCreate(
+                [
+                    'email' => $request->administrator_email,
+                    'bank_id' => $bank->id
+                ],
+                [
+                    'is_verified' => 1,
+                    'password' => Hash::make($password)
+                ]
+            );
+            BankerProfile::create([
+                'first_name' => $request->administrator_first_name,
+                'last_name' => $request->administrator_last_name,
+                'phone' => $request->administrator_phone,
+                'banker_id' => $banker->id
+            ]);
+
+            AddBankerJob::dispatch($bank, $banker, $password);
+            EmailVerificationJob::dispatch($banker);
+            DB::commit();
+        } catch (Throwable $t) {
+            DB::rollBack();
+            Log::info(['Unable to Create Bank' => $t->getMessage()]);
+            return redirect()->route('banks.create')->with(['error' => 'Unable to create bank at the moment.'])->withInput();
+        }
         return redirect()->route('banks.index')->with(['success' => 'Bank created successfully.']);
     }
 

@@ -25,7 +25,7 @@ class CreateConfirmationRequestsTable extends Migration
             $table->foreign('company_id')->references('id')->on('companies')->onDelete('cascade');
             $table->unsignedInteger('bank_id');
             $table->foreign('bank_id')->references('id')->on('banks')->onDelete('cascade');
-            $table->unsignedSmallInteger('authorization_status')->default(0);
+            $table->string('authorization_status')->default('PENDING');
             $table->unsignedSmallInteger('confirmation_status')->default(0);
             $table->softDeletes();
             $table->timestamps();

@@ -62,6 +62,50 @@
                         @enderror
                     </div>
 
+                    <div class="mt-xxl mb-lg"></div>
+
+                    <h2 class="p-1 m-0 text-16 font-weight-semi text-center">Administrator Information</h2>
+
+                        <div class="form-group">
+                            <label class="control-label" for="administrator_first_name">First Name</label>
+                            <input class="form-control @error('administrator_first_name') is-invalid @enderror" id="administrator_first_name" name="administrator_first_name" value="{{old('administrator_first_name')}}" />
+                            @error('administrator_first_name')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label" for="administrator_last_name">Last Name</label>
+                            <input class="form-control @error('administrator_last_name') is-invalid @enderror" id="administrator_last_name" name="administrator_last_name" value="{{old('administrator_last_name')}}" />
+                            @error('administrator_last_name')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label" for="administrator_email">Email Address</label>
+                            <input class="form-control @error('administrator_email') is-invalid @enderror" id="administrator_email" name="administrator_email" value="{{old('administrator_email')}}" />
+                            @error('administrator_email')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label" for="administrator_phone">Phone</label>
+                            <input class="form-control @error('administrator_phone') is-invalid @enderror" id="administrator_phone" name="administrator_phone" value="{{old('administrator_phone')}}" />
+                            @error('administrator_phone')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+
                     <div class="form-group col-lg-6" style="margin:auto;">
                         <button type="submit" class="btn btn-primary btn-sm">
                             <i class="fa fa-dot-circle-o"></i> Submit
@@ -77,15 +121,4 @@
             Bank will be recorded and reflected on user dashboard.
         </div>
     </div>
-@endsection
-
-@section('script')
-    <script src="/dashboard/dist/assets/vendors/summernote/summernote-lite.min.js"></script>
-    <script>
-        $(document).ready(function() {
-            $("#summernote").summernote({
-                height: 120
-            });
-        });
-    </script>
 @endsection

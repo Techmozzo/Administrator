@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateProfilesTable extends Migration
+class CreateAuditorProfilesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreateProfilesTable extends Migration
      */
     public function up()
     {
-        Schema::create('profiles', function (Blueprint $table) {
+        Schema::create('auditor_profiles', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('user_id');
-            $table->string('user_type');
+            $table->unsignedInteger('auditor_id');
+            $table->foreign('auditor_id')->references('id')->on('auditors')->onDelete('cascade');
             $table->string('title')->nullable();
             $table->string('first_name');
             $table->string('last_name');
@@ -27,7 +27,6 @@ class CreateProfilesTable extends Migration
             $table->string('gender')->nullable();
             $table->string('country_of_origin')->nullable();
             $table->string('date_of_birth')->nullable();
-            $table->string('occupation')->nullable();
             $table->string('marital_status')->nullable();
             $table->softDeletes();
             $table->timestamps();
@@ -41,6 +40,6 @@ class CreateProfilesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('profiles');
+        Schema::dropIfExists('auditor_profiles');
     }
 }

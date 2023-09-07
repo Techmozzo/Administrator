@@ -6,9 +6,9 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Address extends Model
+class AuditorAddress extends Model
 {
     use HasFactory, SoftDeletes;
-    protected $fillable = ['house_number', 'city', 'state', 'country', 'zip_code', 'user_id', 'user_type'];
-
+    
+    protected $fillable = ['house_number', 'city', 'state', 'country', 'zip_code', 'auditor_id'];
 }

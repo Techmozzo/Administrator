@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use App\Interfaces\Types;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -15,7 +14,7 @@ class Auditor extends Model
     }
 
     public function profile(){
-        return $this->hasOne(Profile::class, 'user_id')->where('user_type', Types::Users['auditor']);
+        return $this->hasOne(AuditorProfile::class, 'auditor_id');
     }
 
     public function company(){

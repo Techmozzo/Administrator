@@ -20,8 +20,8 @@ class CreateBankersTable extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->unsignedInteger('role_id');
             $table->tinyInteger('is_verified')->default(0);
+            $table->tinyInteger('must_change_password')->default(1);
             $table->tinyInteger('is_blocked')->default(0);
             $table->rememberToken();
             $table->softDeletes();
