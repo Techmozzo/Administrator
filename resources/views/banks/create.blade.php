@@ -30,32 +30,20 @@
                     </div>
 
                     <div class="form-group">
+                        <label class="control-label" for="subdomain">Subdomain</label>
+                        <input class="form-control @error('subdomain') is-invalid @enderror" id="subdomain" name="subdomain" value="{{old('subdomain')}}" />
+                        @error('subdomain')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+
+                    <div class="form-group">
                         <label class="control-label" for="email">Email Address</label>
                         <input type="text" class="form-control @error('email') is-invalid @enderror" id="email"
                             name="email" value="{{old('email')}}" />
                         @error('email')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-                    </div>
-
-                    <div class="form-group">
-                        <label class="control-label" for="email">Web Address</label>
-                        <input type="text" class="form-control @error('website') is-invalid @enderror" id="website"
-                            name="website" value="{{old('website')}}" />
-                        @error('website')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-                    </div>
-
-                    <div class="form-group">
-                        <label class="control-label" for="email">Phone</label>
-                        <input type="text" class="form-control @error('phone') is-invalid @enderror" id="phone"
-                            name="phone" value="{{old('phone')}}" />
-                        @error('phone')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>

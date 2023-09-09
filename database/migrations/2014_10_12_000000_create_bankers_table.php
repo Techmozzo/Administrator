@@ -22,7 +22,8 @@ class CreateBankersTable extends Migration
             $table->string('password');
             $table->tinyInteger('is_verified')->default(0);
             $table->tinyInteger('must_change_password')->default(1);
-            $table->tinyInteger('is_blocked')->default(0);
+            $table->unsignedInteger('role_id');
+            $table->foreign('role_id')->references('id')->on('banker_roles')->onDelete('cascade');            $table->tinyInteger('is_blocked')->default(0);
             $table->rememberToken();
             $table->softDeletes();
             $table->timestamps();

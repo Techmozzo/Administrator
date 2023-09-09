@@ -8,6 +8,7 @@ use App\Jobs\EmailVerificationJob;
 use App\Models\Bank;
 use App\Models\Banker;
 use App\Models\BankerProfile;
+use App\Models\BankerRole;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
@@ -46,14 +47,14 @@ class BankController extends Controller
     public function store(BankRequest $request)
     {
         try {
+            $role = BankerRole::where('name', 'admin')->first();
             DB::beginTransaction();
             $bank = Bank::updateOrCreate(
                 ['name' => $request->name],
                 [
                     'bank_code' => 'EA-' . rand(100, 999) . rand(1000, 9999) . '-B',
-                    'website' => $request->website,
                     'email' => $request->email,
-                    'email' => $request->phone,
+                    'subdomain' => $request->subdomain,
                 ]
             );
             $password = Str::random(8);
@@ -64,9 +65,11 @@ class BankController extends Controller
                 ],
                 [
                     'is_verified' => 1,
-                    'password' => Hash::make($password)
+                    'password' => Hash::make($password),
+                    'role_id' => $role->id
                 ]
             );
+
             BankerProfile::create([
                 'first_name' => $request->administrator_first_name,
                 'last_name' => $request->administrator_last_name,

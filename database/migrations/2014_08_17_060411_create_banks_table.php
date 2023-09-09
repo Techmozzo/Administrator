@@ -16,6 +16,7 @@ class CreateBanksTable extends Migration
         Schema::create('banks', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name')->unique();
+            $table->string('subdomain')->unique();
             $table->string('bank_code')->unique();
             $table->string('logo')->nullable();
             $table->string('email')->nullable();

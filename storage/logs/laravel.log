@@ -200,3 +200,52 @@
 #88 /Users/chukwuemekainya/Sites/audit-confirmation/admin/server.php(21): require_once('/Users/chukwuem...')
 #89 {main}
 "} 
+[2023-09-08 09:10:34] local.ERROR: Error: config/permission.php not loaded. Run [php artisan config:clear] and try again. {"exception":"[object] (Exception(code: 0): Error: config/permission.php not loaded. Run [php artisan config:clear] and try again. at /Users/chukwuemekainya/Sites/audit-confirmation/admin/database/migrations/2023_09_08_090256_create_permission_tables.php:22)
+[stacktrace]
+#0 /Users/chukwuemekainya/Sites/audit-confirmation/admin/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(472): CreatePermissionTables->up()
+#1 /Users/chukwuemekainya/Sites/audit-confirmation/admin/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(394): Illuminate\\Database\\Migrations\\Migrator->runMethod(Object(Illuminate\\Database\\MySqlConnection), Object(CreatePermissionTables), 'up')
+#2 /Users/chukwuemekainya/Sites/audit-confirmation/admin/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(403): Illuminate\\Database\\Migrations\\Migrator->Illuminate\\Database\\Migrations\\{closure}()
+#3 /Users/chukwuemekainya/Sites/audit-confirmation/admin/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(202): Illuminate\\Database\\Migrations\\Migrator->runMigration(Object(CreatePermissionTables), 'up')
+#4 /Users/chukwuemekainya/Sites/audit-confirmation/admin/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(167): Illuminate\\Database\\Migrations\\Migrator->runUp('/Users/chukwuem...', 2, false)
+#5 /Users/chukwuemekainya/Sites/audit-confirmation/admin/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(112): Illuminate\\Database\\Migrations\\Migrator->runPending(Array, Array)
+#6 /Users/chukwuemekainya/Sites/audit-confirmation/admin/vendor/laravel/framework/src/Illuminate/Database/Console/Migrations/MigrateCommand.php(84): Illuminate\\Database\\Migrations\\Migrator->run(Array, Array)
+#7 /Users/chukwuemekainya/Sites/audit-confirmation/admin/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php(606): Illuminate\\Database\\Console\\Migrations\\MigrateCommand->Illuminate\\Database\\Console\\Migrations\\{closure}()
+#8 /Users/chukwuemekainya/Sites/audit-confirmation/admin/vendor/laravel/framework/src/Illuminate/Database/Console/Migrations/MigrateCommand.php(77): Illuminate\\Database\\Migrations\\Migrator->usingConnection(NULL, Object(Closure))
+#9 /Users/chukwuemekainya/Sites/audit-confirmation/admin/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(36): Illuminate\\Database\\Console\\Migrations\\MigrateCommand->handle()
+#10 /Users/chukwuemekainya/Sites/audit-confirmation/admin/vendor/laravel/framework/src/Illuminate/Container/Util.php(40): Illuminate\\Container\\BoundMethod::Illuminate\\Container\\{closure}()
+#11 /Users/chukwuemekainya/Sites/audit-confirmation/admin/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(93): Illuminate\\Container\\Util::unwrapIfClosure(Object(Closure))
+#12 /Users/chukwuemekainya/Sites/audit-confirmation/admin/vendor/laravel/framework/src/Illuminate/Container/BoundMethod.php(35): Illuminate\\Container\\BoundMethod::callBoundMethod(Object(Illuminate\\Foundation\\Application), Array, Object(Closure))
+#13 /Users/chukwuemekainya/Sites/audit-confirmation/admin/vendor/laravel/framework/src/Illuminate/Container/Container.php(653): Illuminate\\Container\\BoundMethod::call(Object(Illuminate\\Foundation\\Application), Array, Array, NULL)
+#14 /Users/chukwuemekainya/Sites/audit-confirmation/admin/vendor/laravel/framework/src/Illuminate/Console/Command.php(136): Illuminate\\Container\\Container->call(Array)
+#15 /Users/chukwuemekainya/Sites/audit-confirmation/admin/vendor/symfony/console/Command/Command.php(298): Illuminate\\Console\\Command->execute(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#16 /Users/chukwuemekainya/Sites/audit-confirmation/admin/vendor/laravel/framework/src/Illuminate/Console/Command.php(120): Symfony\\Component\\Console\\Command\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Illuminate\\Console\\OutputStyle))
+#17 /Users/chukwuemekainya/Sites/audit-confirmation/admin/vendor/symfony/console/Application.php(1040): Illuminate\\Console\\Command->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#18 /Users/chukwuemekainya/Sites/audit-confirmation/admin/vendor/symfony/console/Application.php(301): Symfony\\Component\\Console\\Application->doRunCommand(Object(Illuminate\\Database\\Console\\Migrations\\MigrateCommand), Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#19 /Users/chukwuemekainya/Sites/audit-confirmation/admin/vendor/symfony/console/Application.php(171): Symfony\\Component\\Console\\Application->doRun(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#20 /Users/chukwuemekainya/Sites/audit-confirmation/admin/vendor/laravel/framework/src/Illuminate/Console/Application.php(94): Symfony\\Component\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#21 /Users/chukwuemekainya/Sites/audit-confirmation/admin/vendor/laravel/framework/src/Illuminate/Foundation/Console/Kernel.php(129): Illuminate\\Console\\Application->run(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#22 /Users/chukwuemekainya/Sites/audit-confirmation/admin/artisan(35): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#23 {main}
+"} 
+[2023-09-08 09:25:14] local.ERROR: Cannot declare class App\Models\AuditorRole, because the name is already in use {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Cannot declare class App\\Models\\AuditorRole, because the name is already in use at /Users/chukwuemekainya/Sites/audit-confirmation/admin/app/Models/AuditorRole.php:8)
+[stacktrace]
+#0 {main}
+"} 
+[2023-09-08 09:25:26] local.ERROR: Cannot declare class App\Models\AuditorRole, because the name is already in use {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Cannot declare class App\\Models\\AuditorRole, because the name is already in use at /Users/chukwuemekainya/Sites/audit-confirmation/admin/app/Models/BankerRole.php:8)
+[stacktrace]
+#0 {main}
+"} 
+[2023-09-08 09:25:29] local.ERROR: Cannot declare class App\Models\AuditorRole, because the name is already in use {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Cannot declare class App\\Models\\AuditorRole, because the name is already in use at /Users/chukwuemekainya/Sites/audit-confirmation/admin/app/Models/BankerRole.php:8)
+[stacktrace]
+#0 {main}
+"} 
+[2023-09-08 09:35:35] local.ERROR: Cannot declare class CreateAuditorRolesTable, because the name is already in use {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Cannot declare class CreateAuditorRolesTable, because the name is already in use at /Users/chukwuemekainya/Sites/audit-confirmation/admin/database/migrations/2014_10_11_074245_create_banker_roles_table.php:7)
+[stacktrace]
+#0 {main}
+"} 
+[2023-09-08 09:57:05] local.INFO: array (
+  'Unable to Create Bank' => 'SQLSTATE[HY000]: General error: 1364 Field \'subdomain\' doesn\'t have a default value (SQL: insert into `banks` (`name`, `bank_code`, `website`, `email`, `updated_at`, `created_at`) values (Guaranty Trust Bank, EA-3433695-B, ?, ?, 2023-09-08 09:57:05, 2023-09-08 09:57:05))',
+)  
+[2023-09-08 09:58:05] local.INFO: array (
+  'Unable to Create Bank' => 'Attempt to read property "id" on null',
+)  

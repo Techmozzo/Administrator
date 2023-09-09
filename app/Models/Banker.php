@@ -9,7 +9,7 @@ class Banker extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['email', 'password', 'must_change_password', 'bank_id', 'is_verified', 'is_blocked'];
+    protected $fillable = ['email', 'password', 'must_change_password', 'bank_id', 'role_id', 'is_verified', 'is_blocked'];
 
     public function  bank(){
         return $this->belongsTo(Bank::class, 'bank_id');
