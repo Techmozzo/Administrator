@@ -22,7 +22,7 @@ class CreateSignatoriesTable extends Migration
             $table->unsignedInteger('confirmation_request_id');
             $table->foreign('confirmation_request_id')->references('id')->on('confirmation_requests')->onDelete('cascade');
             $table->string('status')->default('PENDING');
-            $table->string('reason')->nullable();
+            $table->string('comment')->nullable();
             $table->string('token');
             $table->timestamp('expired_at')->default(Carbon::now()->addDay());
             $table->softDeletes();

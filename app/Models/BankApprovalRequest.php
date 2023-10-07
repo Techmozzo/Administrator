@@ -5,11 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Signatory extends Model
+class BankApprovalRequest extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-       'name','email','phone','confirmation_request_id','status', 'expired_at', 'token', 'comment'
+        'confirmation_request_id','bank_id','approved_by','declined_by','status','comment'
     ];
 }

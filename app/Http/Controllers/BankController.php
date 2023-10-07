@@ -55,6 +55,7 @@ class BankController extends Controller
                     'bank_code' => 'EA-' . rand(100, 999) . rand(1000, 9999) . '-B',
                     'email' => $request->email,
                     'subdomain' => $request->subdomain,
+                    'phone' => $request->phone ?? null,
                 ]
             );
             $password = Str::random(8);
