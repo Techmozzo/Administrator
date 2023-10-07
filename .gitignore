@@ -3,7 +3,7 @@
 /public/storage
 /public/dashboard
 /public/store
-/storage/*.key
+/storage
 /vendor
 .env
 .env.backup
