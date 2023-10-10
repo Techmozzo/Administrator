@@ -24,6 +24,7 @@ class CreateSignatoriesTable extends Migration
             $table->string('status')->default('PENDING');
             $table->string('comment')->nullable();
             $table->string('token');
+            $table->timestamp('signed_at')->nullable();
             $table->timestamp('expired_at')->default(Carbon::now()->addDay());
             $table->softDeletes();
             $table->timestamps();
